@@ -14,8 +14,8 @@ End-user quick start (view site locally)
 - Option A — Open locally: double-click `index.html` to open in your browser.  
   Note: some browsers restrict local resource loading — use a local server if you see broken assets.
 - Option B — Run a lightweight HTTP server (recommended):
-  - Python 3: `https://jenny-1014.github.io/Nail_Salon_Integrated_System/index.html` → open http://localhost:8000  
-  - Node (http-server): `[npx http-server -p 8000](https://jenny-1014.github.io/Nail_Salon_Integrated_System/index.html)` → open http://localhost:8000
+  - Python 3: `https://jenny-1014.github.io/Nail_Salon_Integrated_System/index.html`
+  - Node (http-server): `[npx http-server -p 8000](https://jenny-1014.github.io/Nail_Salon_Integrated_System/index.html)`
 
 Java sample: Restaurant Ordering System (developer)
 - Purpose: Demonstrates a desktop ordering workflow (menu categories, add items, quantity, subtotal, discounts, order number, and order history).
