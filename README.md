@@ -8,9 +8,6 @@
 - 預約 (建立 / 修改 / 取消)
 - 顧客資料管理（連絡資訊、歷史紀錄）
 - 服務項目與價格設定
-- 員工管理與排班
-- 營收統計與報表匯出
-- (可選) 通知／提醒功能 (簡訊或信件)
 
 技術棧（範例）
 - 後端：Node.js / Express 或 ASP.NET Core（依專案實際使用）
@@ -36,7 +33,7 @@
    - npm run migrate 或 使用專案提供的 SQL
 6. 啟動開發伺服器：
    - npm run dev
-7. 開啟瀏覽器並前往：http://localhost:3000（依專案設定）
+7. 開啟瀏覽器並前往：https://jenny-1014.github.io/Nail_Salon_Integrated_System/
 
 設定說明
 - env 檔案：將敏感資訊（資料庫密碼、JWT 金鑰）放在 .env，請勿上傳到版本控制。
