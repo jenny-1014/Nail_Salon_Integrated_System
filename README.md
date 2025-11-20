@@ -1,62 +1,56 @@
-# Nail Salon Integrated System
+# Nail Salon Integrated System — Project Overview & Quick Start
 
-簡介
-- 一個為美甲店設計的整合系統，包含預約管理、顧客與服務項目管理、營收與報表、員工排班等功能。
-- 目標是簡化店務流程、提升顧客體驗並方便店家管理日常營運。
+Project summary  
+This repository contains a static website collection presenting information for multiple nail salons (individual HTML pages per salon) and a Java Swing sample application demonstrating a small restaurant ordering system. The site is intended for informational/demo purposes; the Java application is a local desktop example for menu, ordering, discounts and order history.
 
-主要功能
-- 預約 (建立 / 修改 / 取消)
-- 顧客資料管理（連絡資訊、歷史紀錄）
-- 服務項目與價格設定
+Repository layout (important files)
+- index.html — project home page (links to salon pages)  
+- page1.html … page12.html — individual salon pages (info, booking rules, price lists, reviews)  
+- images/ or images2/ — image assets (ensure file names and paths match exactly)  
+- RestaurantOrderingSystem.java — Java Swing sample application (requires JDK 17+)  
+- README.md — this file
 
-技術棧（範例）
-- 後端：Node.js / Express 或 ASP.NET Core（依專案實際使用）
-- 前端：React / Vue / Angular（依專案實際使用）
-- 資料庫：MySQL / PostgreSQL / SQLite
-- 身分驗證：JWT / OAuth（若需）
-- 部署：Docker、Heroku、VPS 或 IIS
+End-user quick start (view site locally)
+- Option A — Open locally: double-click `index.html` to open in your browser.  
+  Note: some browsers restrict local resource loading — use a local server if you see broken assets.
+- Option B — Run a lightweight HTTP server (recommended):
+  - Python 3: `https://jenny-1014.github.io/Nail_Salon_Integrated_System/index.html` → open http://localhost:8000  
+  - Node (http-server): `[npx http-server -p 8000](https://jenny-1014.github.io/Nail_Salon_Integrated_System/index.html)` → open http://localhost:8000
 
-快速啟動（範例）
-1. 先安裝必要環境：Node.js 16+、資料庫（MySQL 等）
-2. 複製專案：
-   - git clone <repo-url>
-3. 安裝相依套件（以 Node 為例）：
-   - npm install
-4. 建立環境變數檔 .env，範例如下：
-   - DB_HOST=localhost
-   - DB_PORT=3306
-   - DB_USER=root
-   - DB_PASS=yourpassword
-   - DB_NAME=nail_salon
-   - JWT_SECRET=your_secret
-5. 初始化資料庫 / migration：
-   - npm run migrate 或 使用專案提供的 SQL
-6. 啟動開發伺服器：
-   - npm run dev
-7. 開啟瀏覽器並前往：https://jenny-1014.github.io/Nail_Salon_Integrated_System/
+Java sample: Restaurant Ordering System (developer)
+- Purpose: Demonstrates a desktop ordering workflow (menu categories, add items, quantity, subtotal, discounts, order number, and order history).
+- Requirements: JDK 17 or later (the source uses `record` and modern switch expressions).
+- Compile & run (command line):
+  1. Open a terminal at the project root:  
+     `cd "c:\Users\user\Desktop\美甲\Nail_Salon_Integrated_System"`
+  2. Compile: `javac RestaurantOrderingSystem.java`
+  3. Run: `java RestaurantOrderingSystem`
+- In an IDE: import the file into an IntelliJ/Eclipse project and set Project SDK to JDK 17+, then run the `main` method.
 
-設定說明
-- env 檔案：將敏感資訊（資料庫密碼、JWT 金鑰）放在 .env，請勿上傳到版本控制。
-- 資料庫：如果使用 migration 工具（如 Sequelize、TypeORM、EF Core），請執行 migration 指令建立資料表。
-- 第三方服務（發簡訊、付款等）：將 API 金鑰設定至環境變數並在程式中讀取。
+Packaging & releasing (maintainer)
+- For static site distribution: create a zip of `index.html`, all `page*.html` and the `images/` directories. Example (macOS / Linux):  
+  `zip -r release/build-v1.0.0.zip index.html page*.html images/`
+- Windows PowerShell example:  
+  `New-Item -ItemType Directory -Path release -Force`  
+  `Compress-Archive -Path .\index.html, .\page*.html, .\images\* -DestinationPath .\release\build-v1.0.0.zip`
+- GitHub Releases: tag the repo and upload the zip, or use `gh release create` to automate.
 
-常見指令（範例）
-- 安裝：npm install
-- 開發：npm run dev
-- 建置：npm run build
-- 測試：npm run test
-- migration：npm run migrate
+Important implementation notes
+- Paths and case sensitivity: file names and paths must match exactly. Use forward slashes (`/`) in HTML (`images2/12_ej_nail.png`). Linux and many hosting environments are case-sensitive.  
+- Filenames: avoid spaces and non-ASCII characters; prefer `snake_case` or `kebab-case`.
+- Local data: several salon pages store reviews in browser `localStorage` — clearing browser storage will delete those reviews.
 
-部署
-- 建議使用 Docker 建置映像並在伺服器上運行，或直接部署到支援 Node 的 PaaS。
-- 設定環境變數於部署平台，確保資料庫可存取。
+Troubleshooting (common issues)
+- Missing images: verify the file exists at the exact path used in HTML and confirm extension and case match.  
+- Java compile errors: ensure `java -version` reports JDK 17+. Confirm file name is `RestaurantOrderingSystem.java` and no spaces are in the filename.  
+- GUI not responding: close the window or terminate the Java process (e.g., Task Manager on Windows).
 
-貢獻
-- 歡迎提出 issue 或 PR，請在 PR 中說明修改內容與原因。
-- 請遵守程式碼風格與測試標準。
+Testing recommendations
+- Static pages: view each `pageN.html` in a server environment and verify images, links and the "Back to Home" link go to `index.html`.  
+- Java sample: exercise adding items, merging same items, applying discounts, and validating order history entries.
 
-聯絡
-- 若需協助或有需求請留下聯絡方式／ issue。
+Contributing
+- Issues and pull requests are welcome. For PRs: describe the change, include testing instructions, and ensure asset paths remain correct.
 
-授權
-- 請在此填寫專案授權條款（例如 MIT License）。
+License & contact
+- Add a LICENSE file (recommended: MIT) and include contact information or issue guidelines on the repository page.
